@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video Editing Reels</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dqa7cpqmy/image/upload/v1782240735/Sk_logo_1_ofupdw.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#090909;
+}
+
+::-webkit-scrollbar-thumb{
+background:#facc15;
+border-radius:20px;
+}
+
+body{
+font-family:'Syne',sans-serif;
+
+background:
+radial-gradient(circle at 20% 20%, rgba(250,204,21,.08), transparent 25%),
+radial-gradient(circle at 80% 80%, rgba(250,204,21,.08), transparent 25%),
+linear-gradient(135deg,#020202,#090909,#020202);
+
+color:#fff;
+padding:60px;
+overflow-x:hidden;
+position:relative;
+}
+
+/* Background Glow */
+
+body::before{
+content:"";
+position:fixed;
+top:-200px;
+left:-200px;
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(250,204,21,.15),transparent 70%);
+pointer-events:none;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+bottom:-200px;
+right:-200px;
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(250,204,21,.08),transparent 70%);
+pointer-events:none;
+z-index:-1;
+}
+
+::selection{
+background:#facc15;
+color:#000;
+}
+
+
+.bg-light1,
+.bg-light2{
+position:fixed;
+border-radius:50%;
+filter:blur(180px);
+pointer-events:none;
+z-index:-1;
+}
+
+.bg-light1{
+width:350px;
+height:350px;
+background:rgba(250,204,21,.12);
+top:10%;
+right:5%;
+}
+
+.bg-light2{
+width:300px;
+height:300px;
+background:rgba(250,204,21,.08);
+bottom:10%;
+left:5%;
+}
+.bg-orb{
+position:fixed;
+border-radius:50%;
+filter:blur(180px);
+pointer-events:none;
+z-index:0;
+
+animation:
+floatOrb 18s ease-in-out infinite,
+pulseGlow 6s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+
+0%,100%{
+opacity:.5;
+}
+
+50%{
+opacity:1;
+}
+
+}
+.orb1{
+width:700px;
+height:700px;
+background:rgba(250,204,21,.18);
+top:-200px;
+left:-200px;
+}
+
+.orb2{
+width:600px;
+height:600px;
+background:rgba(250,204,21,.12);
+right:-150px;
+top:20%;
+animation-delay:2s;
+}
+
+.orb3{
+width:500px;
+height:500px;
+background:rgba(250,204,21,.10);
+left:35%;
+bottom:-250px;
+animation-delay:4s;
+}
+.bg-lines{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+opacity:.15;
+
+background:
+repeating-linear-gradient(
+90deg,
+transparent,
+transparent 120px,
+#facc15 121px,
+transparent 122px
+);
+
+animation:moveLines 25s linear infinite;
+}
+
+@keyframes moveLines{
+.orbit{
+position:fixed;
+right:5%;
+top:50%;
+
+width:500px;
+height:500px;
+
+border:1px solid rgba(250,204,21,.08);
+border-radius:50%;
+
+transform:translateY(-50%);
+animation:spin 30s linear infinite;
+
+pointer-events:none;
+z-index:0;
+}
+
+@keyframes spin{
+
+from{
+transform:translateY(-50%) rotate(0deg);
+}
+
+to{
+transform:translateY(-50%) rotate(360deg);
+}
+
+}
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-120px);
+}
+
+}
+@keyframes floatOrb{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-40px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+h1{
+position:relative;
+z-index:2;
+
+text-align:center;
+font-size:72px;
+font-weight:800;
+color:#facc15;
+letter-spacing:-3px;
+margin-bottom:60px;
+
+text-shadow:
+0 0 20px rgba(250,204,21,.4),
+0 0 60px rgba(250,204,21,.2);
+}
+
+.grid{
+display:grid;
+position:relative;
+z-index:2;
+grid-template-columns:repeat(2,1fr);
+gap:35px;
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+background:rgba(17,17,17,.92);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+transition:.4s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#facc15;
+box-shadow:0 0 40px rgba(250,204,21,.15);
+}
+
+.cover{
+position:relative;
+height:650px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.cover img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+.play-btn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:100px;
+height:100px;
+border-radius:50%;
+background:#facc15;
+color:#000;
+font-size:42px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:800;
+box-shadow:0 0 35px rgba(250,204,21,.4);
+pointer-events:none;
+}
+
+.info{
+padding:28px;
+}
+
+.reel-number{
+font-size:13px;
+letter-spacing:2px;
+color:#facc15;
+margin-bottom:15px;
+}
+
+.info h3{
+font-size:30px;
+margin-bottom:12px;
+}
+
+.info p{
+color:#999;
+line-height:1.7;
+}
+
+.play-link{
+display:inline-block;
+margin-top:25px;
+text-decoration:none;
+color:#facc15;
+font-weight:700;
+letter-spacing:1px;
+cursor:pointer;
+user-select:none;
+-webkit-user-select:none;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+padding:20px;
+}
+
+.popup.active{
+display:flex;
+}
+
+.video-box{
+width:70%;
+max-width:900px;
+max-height:90vh;
+position:relative;
+}
+
+.video-box video{
+width:100%;
+max-height:85vh;
+border-radius:20px;
+object-fit:contain;
+background:#000;
+}
+
+.custom-play{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90px;
+height:90px;
+border-radius:50%;
+background:#facc15;
+color:#000;
+font-size:40px;
+font-weight:800;
+display:none;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+z-index:100;
+box-shadow:
+0 0 15px rgba(250,204,21,.7),
+0 0 35px rgba(250,204,21,.6),
+0 0 60px rgba(250,204,21,.4);
+}
+
+.close{
+position:absolute;
+top:-65px;
+right:0;
+width:52px;
+height:52px;
+border-radius:50%;
+background:#facc15;
+color:#000;
+font-size:24px;
+font-weight:800;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 0 30px rgba(250,204,21,.6);
+transition:.3s;
+}
+
+.close:hover{
+transform:scale(1.1) rotate(90deg);
+box-shadow:0 0 45px rgba(250,204,21,.9);
+}
+
+@media(max-width:900px){
+
+body{
+padding:25px;
+}
+
+h1{
+position:relative;
+z-index:2;
+font-size:48px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.cover{
+height:500px;
+}
+
+.video-box{
+width:95%;
+}
+
+}
+#popupVideo::-webkit-media-controls-play-button{
+filter:hue-rotate(20deg);
+}
+
+#popupVideo::-webkit-media-controls-timeline{
+accent-color:#facc15;
+}
+
+#popupVideo{
+accent-color:#facc15;
+}
+.bg-particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+background-image:
+radial-gradient(circle,#facc15 1px,transparent 1px);
+background-size:120px 120px;
+opacity:.15;
+animation:particlesMove 30s linear infinite;
+}
+
+@keyframes particlesMove{
+
+0%{
+transform:translateY(0px);
+}
+
+100%{
+transform:translateY(-120px);
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-particles"></div>
+
+<div class="orbit"></div>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+
+<div class="bg-light1"></div>
+<div class="bg-light2"></div>
+
+<h1>Video Editing Reels</h1>
+
+<div class="grid">
+
+<!-- CARD 1 -->
+
+<div class="card">
+
+<div class="cover" onclick="openVideo('https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782230485/Portfolio_2_uej6fo.mp4')">
+
+<img src="Cover_images/Portfolio_2_cover.jpg" alt="Portfolio 2">
+
+<div class="play-btn">▶</div>
+
+</div>
+
+<div class="info">
+
+<div class="reel-number">REEL / 01</div>
+
+<h3>Portfolio Introduction</h3>
+
+<p>Personal storytelling and portfolio presentation.</p>
+
+<a class="play-link"
+onclick="openVideo('https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782230485/Portfolio_2_uej6fo.mp4')">
+PLAY REEL
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="card">
+
+<div class="cover" onclick="openVideo('https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782230494/Portfolio_5_wukgyr.mp4')">
+
+<img src="Cover_images/Portfolio_5_cover.jpg" alt="Portfolio 5">
+
+<div class="play-btn">▶</div>
+
+</div>
+
+<div class="info">
+
+<div class="reel-number">REEL / 02</div>
+
+<h3>Coca Cola Commercial</h3>
+
+<p>Creative commercial editing and motion storytelling.</p>
+
+<a class="play-link"
+onclick="openVideo('https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782230494/Portfolio_5_wukgyr.mp4')">
+PLAY REEL
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- VIDEO POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="video-box">
+
+<div class="close" onclick="closeVideo()">×</div>
+
+<div class="custom-play">▶</div>
+
+<video controls id="popupVideo"></video>
+
+</div>
+
+</div>
+
+<script>
+
+function openVideo(src){
+
+const popup=document.getElementById("popup");
+const video=document.getElementById("popupVideo");
+
+video.src=src;
+
+popup.classList.add("active");
+
+video.play();
+
+}
+
+const popupVideo=document.getElementById("popupVideo");
+const customPlay=document.querySelector(".custom-play");
+
+popupVideo.addEventListener("pause",()=>{
+
+if(customPlay){
+customPlay.style.display="flex";
+}
+
+});
+
+popupVideo.addEventListener("play",()=>{
+
+if(customPlay){
+customPlay.style.display="none";
+}
+
+});
+
+if(customPlay){
+
+customPlay.addEventListener("click",()=>{
+
+popupVideo.play();
+
+});
+
+}
+
+function closeVideo(){
+
+const popup=document.getElementById("popup");
+const video=document.getElementById("popupVideo");
+
+video.pause();
+video.currentTime=0;
+
+popup.classList.remove("active");
+
+}
+
+</script>
+
+
+</script>
+
+</body>
+</html>
