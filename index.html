@@ -554,6 +554,137 @@ user-select:none;
     .reel-actions span { color: var(--yellow); font-size: .67rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
     .work-link { color: #898983; font-size: .68rem; transition: color .25s; }
     .work-link:hover { color: var(--yellow); }
+    /* SPORTS BANNER */
+
+#sports{
+padding:40px 0 20px;
+}
+
+.sports-banner-wrapper{
+width:min(1650px,98%);
+margin:0 auto 80px;
+position:relative;
+overflow:hidden;
+
+border-radius:32px;
+cursor:pointer;
+
+border:1px solid rgba(250,204,21,.35);
+
+box-shadow:
+0 0 40px rgba(250,204,21,.18),
+0 0 120px rgba(250,204,21,.08);
+
+transition:all .5s ease;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.sports-banner-wrapper img{
+display:block;
+width:100%;
+height:780px;
+object-fit:cover;
+
+object-fit:cover;
+
+border-radius:32px;
+
+transition:
+transform .7s ease,
+filter .7s ease;
+}
+
+.sports-banner-wrapper:hover{
+transform:translateY(-8px);
+
+box-shadow:
+0 0 60px rgba(250,204,21,.35),
+0 0 180px rgba(250,204,21,.18),
+0 0 250px rgba(250,204,21,.08);
+}
+
+.sports-banner-wrapper:hover img{
+transform:scale(1.08);
+filter:brightness(1.12);
+}
+
+.banner-overlay{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+pointer-events:none;
+}
+
+#enterSportsBtn{
+pointer-events:auto;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+padding:12px 28px;
+
+border:none;
+border-radius:12px;
+
+background:#facc15;
+color:#111;
+
+font-weight:800;
+font-size:15px;
+
+position:absolute;
+bottom:190px;
+left:50%;
+transform:translateX(-50%);
+
+z-index:20;
+
+cursor:pointer;
+
+box-shadow:
+0 0 25px rgba(250,204,21,.4);
+
+transition:.3s;
+}
+
+#enterSportsBtn:hover{
+box-shadow:
+0 0 40px rgba(250,204,21,.7);
+}
+.sports-tag{
+position:absolute;
+top:25px;
+right:25px;
+
+padding:12px 20px;
+
+border-radius:999px;
+
+background:rgba(0,0,0,.65);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(250,204,21,.35);
+
+color:#facc15;
+
+font-size:14px;
+font-weight:700;
+letter-spacing:2px;
+text-transform:uppercase;
+
+box-shadow:
+0 0 20px rgba(250,204,21,.15);
+
+z-index:10;
+}
 
     /* ---------- Education and achievements ---------- */
     .credentials-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
@@ -801,32 +932,39 @@ style="cursor:pointer;">
     </section>
 
     <!-- Cricket reels and After Effects work files -->
-    <section id="sports">
-      <div class="container">
-        <div class="section-kicker">
-Sports Reel Collection
-</div>
-        <h2 class="section-title reveal">
-Sports Edits Built For
-<span>Maximum Engagement.</span>
-</h2>
 
-<div class="reels-intro reveal">
-<p>
-32 Sports Reels showcasing storytelling, transitions,
-motion graphics, typography, emotional edits and
-high-energy short-form content.
-</p>
+<section id="sports">
 
-<span class="reels-count">
-32 Reels · Video Editing Showcase
-</span>
+<div class="sports-banner-wrapper" onclick="window.location.href='sports_edits.html'">
+
+<img
+id="sportsBanner"
+src="https://res.cloudinary.com/dqa7cpqmy/image/upload/v1782292039/Sports_image_banner_image_c8k2zl.png"
+alt="Sports Banner">
+
+<div class="sports-tag">
+⚽ UFC • FOOTBALL • CRICKET
 </div>
 
-<div class="reels-grid" id="reelsGrid"></div>
+</div>
+
+<div class="banner-overlay" style="align-items:flex-end;padding-bottom:140px;">
+
+<button id="enterSportsBtn" onclick="window.location.href='sports_edits.html'">
+🔒 ENTER THE ARENA
+</button>
 
 </div>
+
+<div id="sportsContent" style="display:none;">
+
 </section>
+
+</div>
+
+<!-- Projects section -->
+<section id="projects">
+    
 
 <!-- Projects section -->
 <section id="projects">
@@ -1094,6 +1232,19 @@ poster.style.display = "flex";
 });
 
 });
+ {
+
+const sportsContent =
+document.getElementById("sportsContent");
+
+sportsContent.style.display = "block";
+
+sportsContent.scrollIntoView({
+behavior: "smooth",
+block: "start"
+});
+
+}
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 <script>
@@ -1292,6 +1443,23 @@ reelsGrid.insertAdjacentHTML("beforeend", card);
 
 }
 
+
+</script>
+<script>
+
+function showSportsCards() {
+
+const sportsSection =
+document.getElementById("sportsContent");
+
+sportsSection.style.display = "block";
+
+sportsSection.scrollIntoView({
+behavior: "smooth",
+block: "start"
+});
+
+}
 
 </script>
 </body>
