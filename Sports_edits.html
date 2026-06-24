@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sports Edits | Sanjay Kumar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Syne',sans-serif;
+}
+
+body{
+background:#050505;
+color:#fff;
+overflow-x:hidden;
+position:relative;
+}
+
+:root{
+--gold:#facc15;
+--dark:#050505;
+--card:#111111;
+}
+
+.container{
+width:92%;
+max-width:1500px;
+margin:auto;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:999;
+background:#050505ee;
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(250,204,21,.1);
+}
+
+.nav-inner{
+height:80px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+color:var(--gold);
+}
+
+.menu{
+display:flex;
+gap:40px;
+}
+
+.menu a{
+text-decoration:none;
+color:#fff;
+font-size:14px;
+font-weight:600;
+}
+
+.menu a.active{
+color:var(--gold);
+}
+
+/* HERO */
+
+.hero{
+padding:50px 0;
+}
+
+.hero-banner{
+position:relative;
+height:780px;
+border-radius:40px;
+overflow:hidden;
+border:1px solid rgba(250,204,21,.35);
+box-shadow:
+0 0 40px rgba(250,204,21,.25),
+0 0 100px rgba(250,204,21,.15);
+transition:.5s;
+}
+
+.hero-banner img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+.hero-banner:hover img{
+transform:scale(1.05);
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+90deg,
+rgba(0,0,0,.95) 0%,
+rgba(0,0,0,.65) 40%,
+rgba(0,0,0,.1) 100%
+);
+}
+
+.hero-content{
+position:absolute;
+left:60px;
+top:50%;
+transform:translateY(-50%);
+max-width:500px;
+}
+
+.hero-kicker{
+color:var(--gold);
+font-size:18px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.hero-title{
+font-size:110px;
+line-height:.9;
+font-weight:900;
+}
+
+.hero-title span{
+color:var(--gold);
+}
+
+.hero-text{
+margin-top:25px;
+font-size:22px;
+line-height:1.6;
+color:#ccc;
+}
+
+.hero-buttons{
+margin-top:35px;
+display:flex;
+gap:20px;
+}
+
+.btn-primary{
+background:var(--gold);
+color:#000;
+padding:16px 34px;
+border-radius:12px;
+font-weight:700;
+text-decoration:none;
+}
+
+.btn-secondary{
+border:1px solid var(--gold);
+padding:16px 34px;
+border-radius:12px;
+text-decoration:none;
+color:#fff;
+}
+
+/* SPORTS SECTION */
+
+.sports-section{
+padding:70px 0;
+}
+
+.section-title{
+display:none;
+}
+
+.arena-title{
+text-align:center;
+padding:80px 20px 60px;
+
+background:
+linear-gradient(
+180deg,
+rgba(250,204,21,.05),
+rgba(0,0,0,0)
+);
+
+position:relative;
+}
+
+.arena-title h1{
+font-size:120px;
+font-weight:900;
+line-height:.9;
+color:#fff;
+text-transform:uppercase;
+}
+
+.arena-title h1 span{
+color:#facc15;
+text-shadow:0 0 25px rgba(250,204,21,.8);
+}
+
+.arena-title p{
+margin-top:25px;
+font-size:18px;
+letter-spacing:4px;
+color:#888;
+}
+.sports-subtitle{
+margin-bottom:40px;
+font-size:18px;
+color:#9ca3af;
+max-width:850px;
+line-height:1.8;
+}
+/* Filter Removed */
+.sports-section{
+position:relative;
+overflow:hidden;
+}
+
+.sports-section::before{
+content:"";
+position:absolute;
+top:-200px;
+left:50%;
+transform:translateX(-50%);
+
+width:900px;
+height:900px;
+
+background:
+radial-gradient(
+circle,
+rgba(250,204,21,.08),
+transparent 70%
+);
+
+filter:blur(80px);
+pointer-events:none;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:25px;
+
+background:
+linear-gradient(
+180deg,
+rgba(250,204,21,.03),
+rgba(0,0,0,0)
+);
+
+padding-top:20px;
+border-radius:24px;
+}
+
+.card{
+background:rgba(10,10,10,.85);
+backdrop-filter:blur(10px);
+border-radius:20px;
+overflow:hidden;
+border:1px solid rgba(250,204,21,.12);
+transition:.4s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:
+translateY(-12px)
+scale(1.04)
+rotateX(2deg);
+
+border-color:var(--gold);
+
+box-shadow:
+0 0 30px rgba(250,204,21,.25),
+0 0 80px rgba(250,204,21,.10);
+}
+
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.card-content{
+padding:18px;
+}
+
+.card-content h3{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.card-content p{
+color:#aaa;
+}
+
+/* CTA */
+
+.cta{
+margin:80px auto;
+padding:80px;
+text-align:center;
+background:#0d0d0d;
+border-radius:30px;
+border:1px solid rgba(250,204,21,.15);
+}
+
+.cta h2{
+font-size:70px;
+font-weight:900;
+}
+
+.cta h2 span{
+color:var(--gold);
+}
+
+.cta p{
+margin-top:15px;
+color:#bbb;
+font-size:20px;
+}
+
+@media(max-width:1200px){
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.hero-title{
+font-size:80px;
+}
+
+}
+
+@media(max-width:768px){
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.hero-banner{
+height:500px;
+}
+
+.hero-title{
+font-size:60px;
+}
+
+.hero-content{
+left:30px;
+right:30px;
+}
+
+}
+.play-icon{
+position:absolute;
+right:15px;
+bottom:95px;
+
+width:60px;
+height:60px;
+border-radius:50%;
+background:#facc15;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:#000;
+font-size:24px;
+font-weight:bold;
+
+box-shadow:0 0 20px rgba(250,204,21,.6);
+
+transition:.4s;
+}
+
+.card:hover .play-icon{
+transform:scale(1.15);
+
+box-shadow:
+0 0 25px #facc15,
+0 0 60px rgba(250,204,21,.6);
+}
+
+.card{
+position:relative;
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.popup.active{
+display:flex;
+}
+
+.popup video{
+cursor:pointer;
+height:90vh;
+width:auto;
+max-width:95vw;
+object-fit:contain;
+border-radius:20px;
+background:#000;
+}
+
+.custom-play{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90px;
+height:90px;
+border-radius:50%;
+background:rgba(250,204,21,.95);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+color:#000;
+cursor:pointer;
+z-index:999999;
+box-shadow:0 0 30px rgba(250,204,21,.6);
+transition:.3s;
+}
+
+.custom-play:hover{
+transform:translate(-50%,-50%) scale(1.1);
+}
+
+.custom-play.hide{
+opacity:0;
+pointer-events:none;
+}
+
+.custom-play.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.close-popup{
+position:absolute;
+top:30px;
+right:30px;
+width:60px;
+height:60px;
+background:#facc15;
+color:#000;
+font-size:30px;
+font-weight:800;
+border-radius:50%;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+
+transition:.35s ease;
+
+box-shadow:
+0 0 20px rgba(250,204,21,.4);
+}
+
+.close-popup:hover{
+
+transform:scale(1.15) rotate(90deg);
+
+box-shadow:
+0 0 25px #facc15,
+0 0 60px rgba(250,204,21,.8),
+0 0 100px rgba(250,204,21,1);
+
+}
+
+
+/* Stadium Lights */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-1;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(0,0,0,.35),
+rgba(0,0,0,.88)
+),
+
+url("https://images.unsplash.com/photo-1511886929837-354d827aae26?q=80&w=2400");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+filter:
+brightness(.55)
+contrast(1.05)
+saturate(1.1);
+}
+
+/* Gold Dust */
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-1;
+
+background:
+radial-gradient(
+circle,
+rgba(250,204,21,.35) 1px,
+transparent 1px
+);
+
+background-size:120px 120px;
+opacity:.04;
+
+animation:dustMove 30s linear infinite;
+}
+
+@keyframes dustMove{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(140px);
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<!-- Navbar Removed -->
+
+<!-- HERO -->
+
+
+
+<!-- SPORTS GRID -->
+
+<section class="hero-title-section">
+
+<div class="arena-title">
+    <h1>
+        SPORTS <span>EDITS</span><br>
+        THE <span>ARENA</span>
+    </h1>
+
+    <p>FOOTBALL • CRICKET • UFC</p>
+</div>
+
+</section>
+
+<section class="sports-section" id="sports">
+
+<div class="container">
+
+
+<!-- Filter Removed -->
+
+<div class="cards" id="sportsCards">
+</div>
+
+</div>
+
+
+
+
+</section>
+
+<!-- CTA -->
+
+<section class="container">
+
+<div class="cta">
+
+<h2>
+HAVE A <span>PROJECT</span> IN MIND?
+</h2>
+
+<p>
+Let's create something powerful and unforgettable.
+</p>
+
+<div style="margin-top:30px">
+
+<a href="mailto:yourmail@gmail.com" class="btn-primary">
+CONTACT ME
+</a>
+
+</div>
+
+</div>
+
+</section>
+<div class="popup" id="popup">
+
+<div
+class="custom-play show"
+id="customPlay"
+onclick="togglePlay()"
+>
+▶
+</div>
+
+<div class="close-popup"
+onclick="closeVideo()">
+×
+</div>
+
+<video
+id="popupVideo"
+playsinline
+controls
+controlsList="nodownload">
+</video>
+
+</div>
+
+<script>
+
+function openVideo(videoSrc){
+
+document.getElementById("popup")
+.classList.add("active");
+
+const video=document.getElementById("popupVideo");
+
+video.addEventListener("click", function(e){
+
+e.preventDefault();
+
+if(video.paused){
+
+video.play();
+
+}else{
+
+video.pause();
+
+}
+
+});
+video.controls = true;
+
+const btn=document.getElementById("customPlay");
+
+video.src=videoSrc;
+
+video.onloadeddata = () => {
+
+video.play();
+
+setTimeout(()=>{
+
+btn.classList.add("hide");
+btn.classList.remove("show");
+
+},300);
+
+};
+
+}
+
+function closeVideo(){
+
+document.getElementById("popup")
+.classList.remove("active");
+
+const video=document.getElementById("popupVideo");
+const btn=document.getElementById("customPlay");
+
+video.pause();
+video.src="";
+
+btn.classList.add("hide");
+btn.classList.remove("show");
+
+}
+
+function togglePlay(){
+
+const video=document.getElementById("popupVideo");
+const btn=document.getElementById("customPlay");
+
+if(video.paused){
+
+video.play();
+
+btn.classList.add("hide");
+btn.classList.remove("show");
+
+}else{
+
+video.pause();
+
+btn.classList.remove("hide");
+btn.classList.add("show");
+
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const video=document.getElementById("popupVideo");
+const btn=document.getElementById("customPlay");
+
+video.addEventListener("pause",()=>{
+
+btn.classList.remove("hide");
+btn.classList.add("show");
+
+});
+
+video.addEventListener("play",()=>{
+
+if(document.activeElement !== video){
+
+btn.classList.add("hide");
+btn.classList.remove("show");
+
+}
+
+});
+
+
+
+video.addEventListener("ended",()=>{
+
+btn.classList.remove("hide");
+btn.classList.add("show");
+
+});
+
+});
+
+</script>
+
+<script>
+
+const thumbnails = [
+"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200",
+"https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200",
+"https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1200",
+"https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200",
+"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200",
+"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200",
+"https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=1200",
+"https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=1200",
+"https://images.unsplash.com/photo-1593766788306-28561086694e?w=1200",
+"https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=1200",
+"https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1200",
+"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200",
+
+"https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1200",
+"https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=1200",
+"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200",
+"https://images.unsplash.com/photo-1624880357913-a8539238245b?w=1200",
+"https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?w=1200",
+"https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=1200",
+"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200",
+"https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?w=1200",
+"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200",
+"https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1200",
+
+"https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=1200",
+"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200",
+"https://images.unsplash.com/photo-1517438476312-10d79c077509?w=1200",
+"https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200",
+"https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200",
+"https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200",
+"https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200",
+"https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=1200",
+"https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=1200"
+];
+
+const sportsVideos = [
+
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782198466/Reels_33_rpp2bb.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782198378/Reels_18_nazs7n.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782198261/Reels_13_pleggf.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191742/Reels_30_c5tgad.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191731/Reels_8_b4f5zc.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191721/Reels_15_zeof2q.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191717/Reels_28_dh8et5.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191714/Reels_29_tidr8r.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191709/Reels_20_lv8uj8.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191705/Reels_19_iygtaw.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191703/Reels_22_g5lco3.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191697/Reels_17_u015px.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191686/Reels_31_jrocth.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191679/Reels_4_ruv8mq.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191679/Reels_3_ddswmh.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191674/Reels_7_m3nmxf.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191662/Reels_32_e5hdca.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191661/Reels_25_u7bqku.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191658/Reels_26_otzzqe.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191652/Reels_24_kiqjto.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191650/Reels_23_l1lccn.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191642/Reels_27_acd9zi.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191622/Reels_21_c1ujow.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191621/Reels_14_acqnpt.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191618/Reels_16_oh6tob.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191598/Reels_11_is185l.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191591/Reels_9_tby0ly.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191585/Reels_6_jp8tvj.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191570/Reels_12_pxb3ke.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191565/Reels_5_myusxl.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782191443/Reels_10_wwoys5.mp4",
+"https://res.cloudinary.com/dqa7cpqmy/video/upload/v1782190308/Reels_2_unesah.mp4"
+
+];
+
+const cardsContainer = document.getElementById("sportsCards");
+
+sportsVideos.forEach((video,index)=>{
+
+cardsContainer.innerHTML += `
+
+<div class="card" onclick="openVideo('${video}')">
+
+<img
+src="${thumbnails[index % thumbnails.length]}"
+onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200'">
+
+<div class="play-icon">▶</div>
+
+<div class="card-content">
+<h3>Sports Reel ${index+1}</h3>
+<p>Sports Edit</p>
+</div>
+
+</div>
+
+`;
+
+});
+
+</script>
+</body>
+</html>
